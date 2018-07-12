@@ -1,0 +1,361 @@
+/*
+create SCSS file mixins and variables to fine tune and organize this mess.
+*/
+* {
+    box-sizing: border-box;
+}
+
+/* Single property */
+html {
+    font-size: 14px;
+}
+
+@media screen and (min-width: 320px) {
+    html {
+        font-size: calc(0.5736137667304015vw + 12.164435946462715px);
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+/* Multiple properties with same values */
+h1, h2, h3, h4, h5 {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
+
+@media screen and (min-width: 20rem) {
+    h1, h2, h3, h4, h5 {
+        padding-top: calc(1vw - 0.2rem);
+        padding-bottom: calc(1vw - 0.2rem);
+    }
+}
+
+@media screen and (min-width: 70rem) {
+    h1, h2, h3, h4, h5 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+body {
+    margin: 10px;
+    font-family: "Roboto", sans-serif,Verdana, Geneva, Tahoma;
+    background-color: #eee;
+}
+
+.img{
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+}
+
+.twohndrd{
+    width: auto;
+    height: 300px;
+}
+
+header{
+    display:flex;
+    /* align-content:space-around; */
+}
+select {
+    margin: 30px 50px 10px 2px;
+    width: 150px;
+    padding: 5px 5px 5px 5px;
+    font-size: 16px;
+    border: 1px solid #f3f3f3;
+    height: 34px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(http://127.0.0.1:5500/fbPlantcalc/public/img/seeds.png) 100% / 19% no-repeat;
+    /* background-color: #49454c; */
+    color: #32352f;
+  }
+
+.ftrC {
+    font-size: 0.45em;
+    padding-right: 4px;
+    float: right;
+}
+
+.fltR{
+    float: right;
+}
+.wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(290px,1fr));
+    background-color: #fff;
+    color: #000;
+    position: relative;
+}
+
+.wrapper2 {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(200px,4fr));
+    margin-bottom: 0.5em;
+}
+
+.box {
+    background-color: #ffffff;
+    color: #E0E2DD;
+    border-radius: 0px;
+    padding: 20px;
+    font-size: 100%;
+}
+
+.e {
+    grid-column: 1 / 3; 
+    grid-row: 2 / 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+button {
+    padding: 15px 10px;
+    border-radius: 3px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.5em;
+    margin-top: 10px;
+    text-align: left;
+}
+
+h2 {
+    color: #673ab7;
+    /* -webkit-text-stroke: #ada47d 1px;
+    -moz-text-stroke: #ada47d 1px;*/
+}
+
+li {
+    list-style-type: none;
+}
+
+span {
+    font-style: italic;
+    color: #A78561;
+    font-size: 0.6em;
+}
+
+img {
+    width: 100px;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #d0d0d0;
+    outline: none;
+    width: 250px;
+    height: 34px;
+    font-size: 1.3em;
+    padding-left: 8px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+input:placeholder-shown {
+    font-size: 0.4em;
+    color: rgb(216, 11, 172) !important;
+    }
+
+
+#demo {
+    font-size: 0.5em;
+}
+
+#addT {
+    display: none;
+}
+button#add, .reset {
+    font-size: 0.9em;
+    margin-right: 15px;
+    padding: 5px;
+    font-size: 0.6em
+}
+
+#s2 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+#result {
+    font-size: 0.3em;
+    font-family: Lato, sans-serif;
+}
+
+.nPlants {
+    font-size: 0.7em
+}
+
+.oops {
+    /*color:#D03D66;*/
+    color: #CDAE45;
+    font-size: 0.5em;
+    margin-left: 10px;
+}
+
+/* 
+.reset {
+    text-align: center;
+    width: 200px;
+     max-width: 149px;
+    height: auto;
+     margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #b9b9b9;
+    background-color:white;
+    background: rgb(217,207,163);
+    background: linear-gradient(180deg, rgba(217,207,163,1) 54%, #A78561 54%);
+    color: #49454C;
+    border-radius: 3px;
+    font-size: 0.6em;
+}
+ */
+
+.largerX {
+    font-size: 4em;
+    color: #673AB7;
+}
+
+.newSeed {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.mRight {
+    align-self: flex-end
+}
+
+.plantCount {
+    color: #d1d2d1;
+    font-size: 1vw;
+    margin-left: -20px;
+    margin-top: -10px;
+    min-width: 250px;
+}
+
+.data-box {
+    color: #000;
+    border-radius: 0px;
+    padding: 7px;
+    font-size: 170%;
+}
+
+.data-box:last-child {
+    border-bottom-right-radius: 0px;
+    color: #080;
+    background-color: rgb(255, 255, 255);
+}
+.data-box:last-child:hover{
+    background-color: blanchedalmond
+}
+
+.l {
+    border-bottom: 1px solid #0d5e6e;
+}
+
+.t {
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.btn-dark {
+    background: #455A64;
+}
+
+.btn-dark:hover {
+    background: #727166;
+}
+
+.btn {
+    font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+    -webkit-appearance: none;
+    font-size: 0.9em;
+    text-shadow: none;
+    line-height: 1.2;
+    display: inline-block;
+    outline: 0;
+    padding: 1px 8px;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    color: #EEEEEE;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none !important;
+    text-align: center;
+    font-weight: normal !important;
+}
+
+.mini-button, .file-upload-button {
+    font-family: "Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+}
+
+.data-box > .btn {
+    float: right;
+}
+
+.wrapper3 {
+    display: grid;
+    background-color: #ffffff;
+    position: relative;
+    border: 1px solid #eee;
+    grid-gap: 1px;
+    grid-template-columns: repeat(auto-fit, minmax(198px, 1fr));
+    margin-bottom: 0.1em;
+}
+.data-box > span {
+    font-size: 1.3em !important;
+}
+
+.data-box > span.d{
+    font-size: 0.9em !important;
+}
+
+/*
+.Note {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.959);
+  opacity: 0;
+  margin: 8px 0 10px 10px;
+  transition: opacity 500ms ease-out;
+  background-color: #D9CFA3;
+  width: 110px;
+  padding: 20px;
+}
+input:not(:placeholder-shown) + .Note {
+  opacity: 1;
+}
+*/
+
+
+.wrapper3:hover {
+    background-color: #EDE7F6;
+}
+
+.ui-del{
+    width: auto;
+    height: 8px;
+    margin-left: 10px;
+    margin-top: 3px
+}
+
+img[name ="remove"]{
+    cursor: pointer;
+}
+a.del{
+    color: crimson;
+    float: right
+}
