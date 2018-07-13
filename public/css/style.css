@@ -93,6 +93,7 @@ select {
     background-color: #fff;
     color: #000;
     position: relative;
+    background-color: beige;
 }
 
 .wrapper2 {
@@ -142,7 +143,7 @@ li {
 span {
     font-style: italic;
     color: #A78561;
-    font-size: 0.6em;
+    font-size: 0.em;
 }
 
 img {
@@ -358,4 +359,8 @@ img[name ="remove"]{
 a.del{
     color: crimson;
     float: right
+}
+
+span[data-tc] {
+    font-size: 1em;
 }
