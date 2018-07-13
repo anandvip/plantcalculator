@@ -59,7 +59,7 @@ let rem = 'any';
         `Member Count : <span class="fltR d">${doc.data().memCount} persons</span>`,
         `${newName}/person : <span class="fltR d">${doc.data().ac}gm</span>`,
         `${newName} Recipe Repeats : <span class="fltR d">${doc.data().rr} times</span>`,
-        `Seasonal Required quantity  : <span class="fltR d">${doc.data().tc}Kg</span>`,
+        `Seasonal Required quantity  : <span class="fltR d"><span data-tc="qty">${doc.data().tc}</span><span data-unit="kilo">Kg</span></span>`,
         `${newName} for the season : <span class="fltR d">${doc.data().plants} plants</span>`,
         `${newName}`,
         `<a class="del">Remove<img name="remove" class="ui-del fltR" src="img/remove.png" alt="remove"></a>`
@@ -96,19 +96,20 @@ domele(ele,elVal);
     });
 
     let myEvnt = document.getElementsByName('seedname');
-    let itemClik;
-    for (let i = 0; i < myEvnt.length; i++) {
-    itemClik = myEvnt[i].textContent;
-      }
-    const addUIAlert = e => {
-      alert(`You Are About to Delete ${itemClik}`);
-      e.stopPropagation();
-    }  
+    //let itemClik;
+    //for (let i = 0; i < myEvnt.length; i++) {
+    //itemClik = myEvnt[i].textContent[i];
+      //}
+    //const addUIAlert;
 
-    let getMyEvnt = () => {
-      myEvnt.forEach(x => x.addEventListener('click',addUIAlert,false))
-      }
-    getMyEvnt();
+    
+      myEvnt.forEach((a,i)=>a.addEventListener('click', (e) => {
+        //e.preventDefault();
+        e.stopPropagation();
+        console.log(`Clicked panel can contain more info about ${myEvnt[i]}`);
+        
+      },false))
+   
 };
 
 // let memberRef = seedb.collection('plantsToGrow');
@@ -175,6 +176,7 @@ let submission = e => {
   console.log(
     `eventHandler must have been removed now, no <b>mutliple submissions</b> now! ;)`
   );
+  sdd.innerHTML = "Store Result"
 };
 
 let dataSubmit = () => {
