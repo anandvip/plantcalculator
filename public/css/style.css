@@ -14,6 +14,7 @@ html {
     html {
         font-size: calc(0.5736137667304015vw + 12.164435946462715px);
     }
+
 }
 
 @media screen and (min-width: 1366px) {
@@ -33,6 +34,7 @@ h1, h2, h3, h4, h5 {
         padding-top: calc(1vw - 0.2rem);
         padding-bottom: calc(1vw - 0.2rem);
     }
+
 }
 
 @media screen and (min-width: 70rem) {
@@ -46,22 +48,62 @@ body {
     margin: 10px;
     font-family: "Roboto", sans-serif,Verdana, Geneva, Tahoma;
     background-color: #eee;
+    position: relative;
 }
 
 .img{
     width: 80px;
     height: 80px;
-    margin-right: 15px;
+    /* margin-right: 15px; */
 }
 
 .twohndrd{
     width: auto;
-    height: 300px;
+    height: 210px;
 }
 
 header{
-    display:flex;
-    /* align-content:space-around; */
+    width: 100%;
+    display: grid;
+    background-color: #eee;
+    grid-template-columns: 80px 1fr 250px;
+    grid-gap: 10px;
+    position: fixed;
+    top: 0;
+    z-index: 800;
+}
+
+header > div{
+    align-self:center;
+}
+
+header > .account{
+    font-size: 0.6em;
+    align-items:center;
+    width: 200px;
+    justify-content: space-evenly;
+    padding: 20px;
+    display: flex;
+}
+
+.profile{
+    width: 40px;
+    height: 40px;
+    border-radius: 60px;
+    background-color: #673AB7;
+    background: url(../img/valogo2018.png) center center no-repeat;
+    border: 1px solid black
+}
+
+ .h1{
+    margin-bottom: 1px;
+    padding-bottom: 0;
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.title{
+    display: block;
 }
 select {
     margin: 30px 50px 10px 2px;
@@ -72,7 +114,7 @@ select {
     height: 34px;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url(http://127.0.0.1:5500/fbPlantcalc/public/img/seeds.png) 100% / 19% no-repeat;
+    background: url(../img/seeds.png) 100% / 19% no-repeat;
     /* background-color: #49454c; */
     color: #32352f;
   }
@@ -94,6 +136,11 @@ select {
     color: #000;
     position: relative;
     background-color: beige;
+    background: url('../img/nature.png') no-repeat fixed;
+    background-size: contain;
+    background-position:right;
+    margin-top: 90px;
+    z-index: 999;
 }
 
 .wrapper2 {
@@ -128,6 +175,7 @@ button {
     font-size: 0.5em;
     margin-top: 10px;
     text-align: left;
+    margin-bottom: 20px
 }
 
 h2 {
@@ -143,7 +191,7 @@ li {
 span {
     font-style: italic;
     color: #A78561;
-    font-size: 0.em;
+    font-size: 0.6em;
 }
 
 img {
@@ -170,6 +218,7 @@ input:placeholder-shown {
 
 #demo {
     font-size: 0.5em;
+    margin-bottom: 55px;
 }
 
 #addT {
@@ -191,6 +240,7 @@ button#add, .reset {
 #result {
     font-size: 0.3em;
     font-family: Lato, sans-serif;
+    z-index: 10;
 }
 
 .nPlants {
@@ -204,23 +254,35 @@ button#add, .reset {
     margin-left: 10px;
 }
 
-/* 
-.reset {
-    text-align: center;
-    width: 200px;
-     max-width: 149px;
-    height: auto;
-     margin-top: 10px;
-    padding: 5px;
-    border: 1px solid #b9b9b9;
-    background-color:white;
-    background: rgb(217,207,163);
-    background: linear-gradient(180deg, rgba(217,207,163,1) 54%, #A78561 54%);
-    color: #49454C;
-    border-radius: 3px;
-    font-size: 0.6em;
+#mem{
+    transition: all 500ms;
 }
- */
+
+.interact{
+    height: 80px;
+}
+
+.inst{
+    margin-top: 30px;
+    width: 262px;
+    height: 134px;
+    margin-left: 10%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+.instAcs{
+    background-image: url('../img/aCs.webp');
+}
+
+.instMem{
+    background-image: url('../img/mem.webp');
+}
+
+.instRep{
+    background-image: url('../img/repRec.webp');
+}
 
 .largerX {
     font-size: 4em;
@@ -258,7 +320,7 @@ button#add, .reset {
     background-color: rgb(255, 255, 255);
 }
 .data-box:last-child:hover{
-    background-color: blanchedalmond
+    background-color: #eee;
 }
 
 .l {
@@ -353,14 +415,123 @@ input:not(:placeholder-shown) + .Note {
     margin-top: 3px
 }
 
-img[name ="remove"]{
+div[name ="remove"], div[name ="seedname"]{
     cursor: pointer;
 }
 a.del{
     color: crimson;
-    float: right
+    float: right;
+    transition: all 300ms;
+}
+
+div[name ="remove"]:hover{
+    font-size: 2em
 }
 
 span[data-tc] {
     font-size: 1em;
 }
+
+.gc{
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.4em !important;
+}
+
+.grn{
+    color: #080;
+}
+.hideIt{
+    display: none;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  color: #ffffff;
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
+
+@media screen and (max-width: 488px) {
+    header{
+        width: 100%;
+        grid-auto-columns: 1fr 1fr;
+    }
+    header > .account{
+        font-size: 0.6em;
+        align-items:center;
+        width: 200px;
+        justify-content: center;
+        padding: 20px;
+        display: flex;
+    }
+    .profile{
+        width: 40px;
+        height: 40px;
+        border-radius: 60px;
+        background-color: #673AB7;
+        background: url(../img/valogo2018.png) center center no-repeat;
+        border: 0px solid black;
+        margin-left:10px
+    }
+    .img{
+        width: 60px;
+        height: 60px;
+    }
+     .title{
+        display: none;
+    }
+}
+

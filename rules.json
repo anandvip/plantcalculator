@@ -1,0 +1,194 @@
+{
+    "rules": {
+            "user":{
+                "userId":"$uid",
+                "name":"Vipul Anand",
+                "$uid": {
+                    "read":true,
+                    "write":true,
+                    "aadharUID":"1234-1234-1234",
+                    "pCalc":{
+                        "memCount":5,
+                        "aCs":"120",
+                        "seed":"Okra",
+                        "rr":5,
+                        "plants":7,
+                        "yield":200
+                    },
+                    "MemberSince" : "20-06-2018",
+                    "profile":[
+                        "/img/photo"
+                    ],
+                    "Desc":[
+                        "Farmer Developer"
+                    ],
+                    "farm":{
+                        "crops":[
+                            "wheat",
+                            "rice",
+                            "papaya",
+                            "quinoa",
+                            "safedMusli"
+                        ],
+                        "land":{
+                            "acres":14,
+                            "kanals":114,
+                            "cultivation":"contracted",
+                            "generation":3,
+                            "accesibleByRoad":true,
+                            "boreWell":2,
+                            "boreWellType":"submersible",
+                            "electricity":"uhbvn",
+                            "load":65,
+                            "ElectUnits":"kwh",
+                            "annualElectBill":12560,
+                            "trees":10,
+                            "path":285,
+                            "pathWidth":8.5,
+                            "pathUnit":"feet",
+                            "cluster":{
+                                "acre":{
+                                    "1":{
+                                        "soil":{
+                                            "zinc":2,
+                                            "Fe":3,
+                                            "organicCarbon":200,
+                                            "nitrogen":23,
+                                            "pH":8.5,
+                                            "soiType":"alkaline",
+                                            "moisture":45,
+                                            "color":"greyBrown"
+                                        },
+                                        "avgYield":{
+                                            "wheat":24,
+                                            "rice":32,
+                                            "papaya":150,
+                                            "quinoa":120,
+                                            "safedMusli":35
+                                        }
+                                    
+            
+                                    },
+                                    "2":{
+                                        "soil":{
+                                            "zinc":2,
+                                            "Fe":3,
+                                            "organicCarbon":200,
+                                            "nitrogen":23,
+                                            "pH":8.5,
+                                            "soilType":"alkaline",
+                                            "moisture":45,
+                                            "color":"greyBrown"
+                
+                                        }
+                                        
+                                    },
+                                    "3":{
+                                        "soil":{
+                                            "zinc":2,
+                                            "Fe":3,
+                                            "organicCarbon":200,
+                                            "nitrogen":23,
+                                            "pH":8,
+                                            "soilType":"alkaline",
+                                            "moisture":49,
+                                            "color":"greyBrown"
+                                        }
+            
+                                    },
+                                    "4":{
+                                        "soil":{
+                                            "zinc":2,
+                                            "Fe":3,
+                                            "organicCarbon":200,
+                                            "nitrogen":23,
+                                            "pH":8.5,
+                                            "soilType":"alkaline",
+                                            "moisture":45,
+                                            "color":"greyBrown"
+                                        }
+            
+                                    },
+                                    "5":{
+                                        "soil":{
+                                            "zinc":2,
+                                            "Fe":3,
+                                            "organicCarbon":200,
+                                            "nitrogen":23,
+                                            "pH":8,
+                                            "soilType":"alkaline",
+                                            "moisture":45,
+                                            "color":"greyBrown"
+                                        }
+            
+                                    },
+                                    "6":{
+                                        "soil":{
+                                            "zinc":2,
+                                            "Fe":3,
+                                            "organicCarbon":200,
+                                            "nitrogen":23,
+                                            "pH":8.5,
+                                            "soilType":"alkaline",
+                                            "moisture":45,
+                                            "color":"greyBrown"
+                                        }
+            
+                                    },
+                                    "7":{
+                                        "soil":{
+                                            "zinc":2,
+                                            "Fe":3,
+                                            "organicCarbon":200,
+                                            "nitrogen":23,
+                                            "pH":9,
+                                            "soilType":"alkaline",
+                                            "moisture":34,
+                                            "color":"Brown"
+                                        }
+            
+                                    }
+
+                                }
+                                    
+                            }
+                    },
+                    "organicCert":{
+                        "chemicalUse":false,
+                        "fitForOrganic":true,
+                        "certification":"VIO",
+                        "certYear":"2018",
+                        "certMonth":"03",
+                        "certDay":"25",
+                        "fee":250000,
+                        "fssai":"pended"
+                    },
+                    "location":{
+                        "lat":29.957574,
+                        "lon":76.527387,
+                        "place":"Pehowa",
+                        "village":"Kheri Shish Gran",
+                        "district":"Kurukshetra",
+                        "State":"Haryana",
+                        "country":"India",
+                        "mapLink":"https://www.google.com/maps/place/29%C2%B057'27.3%22N+76%C2%B031'38.6%22E/@29.957574,76.5251983,17z/data=!3m1!4b1!4m9!1m2!10m1!1e3!3m5!1s0x390e2692993c7695:0x0!7e2!8m2!3d29.957574!4d76.527387"
+
+                    }
+                        }
+                },
+                "bank":{
+                    "read":"null if not validated",
+                    "write":"null if not validated",
+                    "validate":"",
+                    "names":[
+                    "icici",
+                    "idbi",
+                    "united bank of india"
+                ],
+                "accountNumbers":[]
+
+
+            }
+        }
+    }
+}

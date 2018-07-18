@@ -1,0 +1,21 @@
+{
+  "name": "fbPlantcalc",
+  "authors": [
+    "VA <9896918475v@gmail.com>"
+  ],
+  "description": "Plant calculator",
+  "main": "index.html",
+  "keywords": [
+    "firebase",
+    "Auth"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

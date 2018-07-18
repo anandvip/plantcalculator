@@ -1,143 +1,320 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122038928-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'UA-122038928-1');
-</script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Plant Calculator</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-firestore.js"></script>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MC5GQVM');</script>
-  <!-- End Google Tag Manager -->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
+        <style>
+            body {
+                margin: 0;
+                font-size: 1em;
+                font-family: Raleway, serif;
+                background-color: #FFF176;
+            }
 
-  </head>
-  <body>
-      <header>
-      <img class="img" src="img/plantCalc.png" alt="">
-      <h3>Like growing your own food, let's begin with exploring roof vegetable garden-plant calculator</h3>
-    </header>
+            p {
+                font-size: 1.5rem
+            }
 
-      <div class="wrapper">
-        <div class='box flash'>
-          <select id="myText" class="form-control">
-            <option value="select seed">Select Seed</option>
-            <optgroup label="May - June Seeds">
-              <option value="okra">Okra</option>
-              <option value="bitterGourd">Bitter Gourd</option>
-            </optgroup>
-            <optgroup label="July - Sept Seeds">
-              <option value="peas">Peas</option>
-              <option value="bottleGourd">Bottle Gourd</option>
-            </optgroup>
-          </select>
-          <br>
-          <button onclick="seedSeason()">How much one can pluck from a plant?</button>
-  
-          <div id='demo' class="box"></div>
-          <img id="instr" class="twohndrd" src="img/instrBdrLs.png" alt="">
+            h1 {
+                margin-bottom: 0;
+                color: #006eff;
+                font-size: 2.8em;
+                margin-top: 0;
+                padding-bottom: 0;
+                line-height: 36px;
+                filter: contrast(62);
+            }
+
+            form>#emId {
+                grid-row: 1;
+                height: 25px;
+                border-size: 0;
+                border-width: 0;
+                background-color: #fff176;
+                border-bottom: 1px solid #9013fe;
+                width: 69%;
+                justify-self: flex-end;
+            }
 
 
-          <div id="s2">
-              <button id="add">Store Result</button>
-              <button onclick="reset()" class="reset">See Stored Result</button>
-            <button class="reset" onclick="displayBlocks()">See All inputs</button>
-            
-          </div>
-          <div id="s3">
-            <button class = "reset" onclick="hideBlocks()">Hide All inputs</button>
-          </div>
-  
+            form>#pwdId {
+                grid-row: 1;
+                height: 25px;
+                border-size: 0;
+                border-width: 0;
+                background-color: #fff176;
+                border-bottom: 1px solid #9013fe;
+                width: 68%;
+            }
+
+            form {
+                display: grid;
+                grid-auto-flow: row;
+                padding: 20px;
+                grid-gap: 10px;
+            }
+
+            img {
+                width: 100px;
+                margin-left: 25px;
+            }
+
+            .box.f {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+            }
+
+            .wrapper-Lg1 {
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-areas: "header header header";
+                background-color: #FFF176;
+                color: #444;
+                border-color: #fff;
+                border-radius: 5px;
+                border: 0px solid;
+            }
+
+            .wrapper {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 100vh;
+                align-items: center;
+                justify-items: center;
+                -webkit-box-shadow: inset 0px 12px 25px -13px rgba(255, 228, 0, 1);
+                -moz-box-shadow: inset 0px 12px 25px -13px rgba(255, 228, 0, 1);
+                box-shadow: inset 0px 16px 25px -13px rgba(255, 228, 0, 1);
+            }
+
+            .boxW {
+                align-self: center;
+                justify-self: center;
+            }
+
+
+            /* .wrapper-Lg {
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+                grid-template-rows: repeat(2, [row] auto);
+                background-color: #FFF176;
+                color: #444;
+                border-color: #fff;
+                border-radius: 5px;
+                border: 0px solid;
+                justify-content: center
+            }                
+                grid-template-columns: repeat(3, [col] 350px);
+                */
+
+            .box {
+                border-color: #fff;
+                border: 0px solid;
+                color: #fff;
+                border-radius: 1px;
+                padding: 20px;
+            }
+
+
+            .header {
+                grid-area: header;
+            }
+
+            .header {
+                background-color: #ebcf73;
+                display: grid;
+                grid-template-columns: 1fr 200px 100px;
+                font-size: 0.5em;
+                grid-gap: 5px;
+            }
+
+            .d {
+                grid-column: col 1 / span 3;
+                grid-row: row 1;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .e {
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+            .f {
+                grid-column: 3;
+                grid-row: 2
+            }
+
+            .e2 {
+                grid-column: 2;
+            }
+
+            .f3 {
+                grid-column: 3;
+            }
+
+
+
+            .box .box {
+                background-color: #FFF176;
+                color: #444;
+            }
+
+
+            button.btnUIF {
+                grid-column: span 2;
+                justify-self: center;
+                font-size: 1.2em;
+                width: 160px;
+                padding: 10px 40px 10px 40px;
+                border-radius: 5px;
+                background-color: #9013fe;
+                color: white;
+            }
+
+
+            /*             .d {
+                grid-column: col 1 / span 4;
+                grid-row: row 1;
+                display: grid;
+                grid-gap: 10px;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .e {
+                grid-column: 1 / 3;
+                grid-row: 2;
+            }
+
+            .f {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .g {
+                grid-column: 2;
+                grid-row: 1;
+            } */
+
+            .btnUI {
+                height: 36px;
+                padding: 10px 25px;
+                border-radius: 0;
+                border-size: 0;
+                border-width: 0;
+                background-color: #ebcf73;
+                color: black;
+                font-size: 1.4em;
+                border: 1px solid #e4c767;
+            }
+
+            .btnUI:hover {
+                background-color: #444;
+                color: #ebcf73;
+            }
+
+            .hideIt {
+                display: none;
+            }
+
+            .prprshn {
+                font-size: 0.6rem;
+                display: grid;
+                justify-items: center;
+            }
+
+            .img {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto
+            }
+
+            .grn {
+                background-color: #ebcf73;
+                border-bottom: #0600ff 1px solid;
+            }
+
+            @supports (display: grid) {
+                .wrapper>* {
+                    margin: 0;
+                }
+            }
+        </style>
+        <script src="https://cdn.logrocket.io/LogRocket.min.js" crossorigin="anonymous"></script>
+        <script>window.LogRocket && window.LogRocket.init('up0plr/plantcalc');</script>
+    </head>
+
+    <body>
+        <div class="wrapper-Lg1">
+            <header class="box header">
+                <h1>Plant Calculator</h1>
+                <button id="btnLogin" class="btnUI e2">Anonymous Sign In</button>
+                <button id="btnLogout" class="btnUI hideIt f3">Logout</button>
+                <sub id="usrID" class="e2"></sub>
+            </header>
         </div>
-  
-  
-        <div id='mem' class="box pulse">
-          <sup>
-            <span id="zero">Please enter number of family members</span>
-          </sup>
-          <br>
-  
-          <input id="memCount" type="number" onfocus="this.value=''" placeholder="Number of Members" autocomplete="on">
-          <!--<span class="Note">Member Count of your family</span>-->
-          <br>
-          <button onclick="member()" id='pma'>After family member count lets make a best guess of Per member appetite</button>
-          <h3>Members at home?</h3>
-        </div>
-  
-        <div id="aCs" class="box flash">
-          <sup>
-            <span id="zero1">Consumption of Vegetable per member, for example 90 grams</span>
-          </sup>
-          <br>
-          <input id="ac" type="number" onfocus="this.value=''" placeholder="Average Consumption per person">
-          <br>
-          <button onclick="avgConsumptionPerPerson()">Now lets think of number of times you would love to relish selected veg during the season</button>
-  
-          <h3>Average Appetite per member</h3>
-          <sup>Cooked Vegetable Consumption per member is the thought in mind, make a best guess in grams </sup>
-          <br>
-        </div>
-  
-        <div id="repRec" class="box wobble">
-          <sup>
-            <span id="zero2">Repeating diet, for example 10 times this season :)</span>
-          </sup>
-          <br>
-  
-          <input id="rr" type="number" onfocus="this.value=''" placeholder="How many times during the season">
-          <br>
-          <button onclick="numberOfTimesRepeated()">Finally, The number of plants to grow</button>
-  
-          <h3>:) And how many times would you cook this veg during the season?</h3>
-        </div>
-      </div>
-      <div id='final' class="wrapper2">
-        <h3>Here is the Number of Plants you need to Grow</h3>
-        <div id="num" class="box e"></div>
-      </div>
-      <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC5GQVM"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-      <div id="result">
-          <h1>Stored Results</h1>
-      </div>
-      
-      <a href="#">
-        <img src="img/mwl2x.png" alt="Made With Love by Vipul Anand">
-      </a>
-      <span class="ftrC"><a href="privacy.html" target="_blank">Privacy Policy</a> | © Anand Agro Farms 2018</span>
+        <div class="wrapper">
+            <div class="boxW">
+                <div class="boxW prprshn">
+                    <img class="img" src="img/plantCalc.png" alt="plantCalc a fun side project">
+                    <p>It is Fun to Calculate Plants</p>
+                    <span>To be honest this is a fun little tool and challenges one's ability to guess how little food we feed
+                        to this ingenius body to keep it healthy. Try guess work with planet earth population! </span>
+                </div>
+                <div class="boxW">
+                    <form action="/">
+                        <input type="email" name="email" id="emId" placeholder="Email Address" autocomplete="email">
+                        <input autocomplete="current-password" type="password" name="password" id="pwdId" placeholder="password">
+                        <button type="submit" class="btnUIF">Sign Up</button>
+                    </form>
 
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBQ6G_urpOGRZehlmCw3CzmQUoklp-8t5g",
-      authDomain: "plantcalc.firebaseapp.com",
-      databaseURL: "https://plantcalc.firebaseio.com",
-      projectId: "plantcalc",
-      storageBucket: "plantcalc.appspot.com",
-      messagingSenderId: "32551006130"
-    };
-    firebase.initializeApp(config);
-      const seedb = firebase.firestore();
-      seedb.settings({ timestampsInSnapshots: true }); 
-  </script>
-      <script src="js/seed.js"></script>
-      <script src="js/app.js"></script>
-  
-  </body>
+                </div>
+            </div>
+        </div>
+        <a href="#">
+            <img src="img/mwl2x.png" alt="Made With Love by Vipul Anand">
+        </a>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBQ6G_urpOGRZehlmCw3CzmQUoklp-8t5g",
+                authDomain: "plantcalc.firebaseapp.com",
+                databaseURL: "https://plantcalc.firebaseio.com",
+                projectId: "plantcalc",
+                storageBucket: "plantcalc.appspot.com",
+                messagingSenderId: "32551006130"
+            };
+            firebase.initializeApp(config);
+            const seedb = firebase.firestore();
+            const auth = firebase.auth()
+            seedb.settings({ timestampsInSnapshots: true }); 
+        </script>
+        <script>
+            const email = document.getElementById('emId').value;
+            const password = document.getElementById('pwdId').value;
+            var credential = firebase.auth.EmailAuthProvider.credential(email,password).then(()=>{
+                firebase.auth().currentUser.linkAndRetrieveDataWithCredential(credential).then(function (usercred) {
+                var user = usercred.user;
+                console.log("Anonymous account successfully upgraded", user);
+            }, function (error) {
+                console.log("Error upgrading anonymous account", error);
+            })
+                
+            });
+
+
+        </script>
+        <script src="js/login.js"></script>
+
+    </body>
+
 </html>

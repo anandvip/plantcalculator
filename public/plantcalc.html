@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122038928-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122038928-1');
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plant Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MC5GQVM');</script>
+  <!-- End Google Tag Manager -->
+  <style>
+  #btnLogin,#btnLogout {
+    cursor: pointer;
+  }
+  </style>
+
+  </head>
+  <body>
+      <header>
+         
+         <div><img class="img" src="img/plantCalc.png" alt=""></div>
+        <div class="title"><h1 class="h1">Create Food Roof</h1>
+          <span>Like growing your own food, let's begin with exploring roof vegetable garden-plant calculator</span>
+        </div>
+      
+      <div class="account">
+        <a id="btnLogin">Vipul</a>
+        <a id="btnLogout" class="hideIt">| Sign Out</a> 
+        <span class="profile"></span>
+      </div>
+      <span id="usrID" class="gc"></span>
+    </header>
+
+      <div class="wrapper">
+        <div class='box flash'>
+          <select id="myText" class="form-control">
+            <option value="select seed">Select Seed</option>
+            <optgroup label="May - June Seeds">
+              <option value="okra">Okra</option>
+              <option value="bitterGourd">Bitter Gourd</option>
+            </optgroup>
+            <optgroup label="July - Sept Seeds">
+              <option value="peas">Peas</option>
+              <option value="bottleGourd">Bottle Gourd</option>
+            </optgroup>
+          </select>
+          <br>
+        <div class="interact">
+          <button onclick="seedSeason()">How much one can pluck from a plant?</button>
+        </div>
+          <div id='demo' class="box"></div>
+          <img id="instr" class="twohndrd" src="img/instrBdrLs.png" alt="">
+
+
+          <div id="s2">
+              <button id="add">Store Result</button>
+              <button onclick="reset()" class="reset">View Stored Plants</button>
+            <button class="reset" onclick="displayBlocks()">See All inputs</button>
+            
+          </div>
+          <div id="s3">
+            <button class = "reset" onclick="hideBlocks()">Hide All inputs</button>
+          </div>
+  
+        </div>
+  
+  
+        <div id='mem' class="box pulse">
+          <sup>
+            <span id="zero">Please enter number of family members</span>
+          </sup>
+          <br>
+  
+          <input id="memCount" type="number" onfocus="this.value=''" placeholder="Number of Members" autocomplete="on">
+          <!--<span class="Note">Member Count of your family</span>-->
+          <br>
+          <div class="interact">
+          <button onclick="member()" id='pma'>After family member count lets make a best guess of Per member appetite</button>
+          </div>
+          <div class="inst instMem"></div>        
+
+        </div>
+  
+        <div id="aCs" class="box flash">
+          <sup>
+            <span id="zero1">Consumption of Vegetable per member, for example 90 grams</span>
+          </sup>
+          <br>
+          <input id="ac" type="number" onfocus="this.value=''" placeholder="Average Consumption per person">
+          <br>
+          <div class="interact">
+          <button onclick="avgConsumptionPerPerson()">Now lets think of number of times you would love to relish selected veg during the season</button>
+        </div>
+        <div class="inst instAcs"></div>        
+        </div>
+  
+        <div id="repRec" class="box wobble">
+          <sup>
+            <span id="zero2">Repeating diet, for example 10 times this season :)</span>
+          </sup>
+          <br>
+  
+          <input id="rr" type="number" onfocus="this.value=''" placeholder="How many times during the season">
+          <br>
+          <div class="interact">
+          <button onclick="numberOfTimesRepeated()">Finally, The number of plants to grow
+            <br>
+          </button>
+        </div>
+  
+          <div class="inst instRep"></div>        
+
+        </div>
+      </div>
+      <div id='final' class="wrapper2">
+        <h3>Here is the Number of Plants you need to Grow</h3>
+        <div id="num" class="box e"></div>
+      </div>
+      <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC5GQVM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+      <div id="result">
+          <h1>Stored Results</h1>
+          <div id="dloaded" class="loader">Loading...</div>
+      </div>
+      
+      <a href="#">
+        <img src="img/mwl2x.png" alt="Made With Love by Vipul Anand">
+      </a>
+      <span class="ftrC"><a href="privacy.html" target="_blank">Privacy Policy</a> | © Anand Agro Farms 2018</span>
+
+      <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-auth.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBQ6G_urpOGRZehlmCw3CzmQUoklp-8t5g",
+      authDomain: "plantcalc.firebaseapp.com",
+      databaseURL: "https://plantcalc.firebaseio.com",
+      projectId: "plantcalc",
+      storageBucket: "plantcalc.appspot.com",
+      messagingSenderId: "32551006130"
+    };
+    firebase.initializeApp(config);
+      const seedb = firebase.firestore();
+      const auth = firebase.auth();
+      seedb.settings({ timestampsInSnapshots: true }); 
+  </script>
+  <script src="js/seed.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "plantcalc",
+    "default": "plantcalc"
+  }
+}

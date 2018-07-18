@@ -25,6 +25,8 @@ let rem = 'any';
   ss = document.createElement("div");
   pl = document.createElement("div");
   rem = document.createElement("div");
+  
+
 
   //how do we know when was that data entry created?
   //helper function for setting multiple attributes in dom element
@@ -66,7 +68,7 @@ let rem = 'any';
     ]
 
     setAttributes(ss, {class: "data-box l t",name:"seedname"});
-    
+    setAttributes(rem, {name:"remove"});
     let domele = (e,val)=>{
         for(const key in val){
             e[key].innerHTML = val[key]
@@ -81,34 +83,45 @@ domele(ele,elVal);
 
   //link data to the list
   ul.appendChild(ss);
+
   el.map(x => ul.appendChild(x));
   
   //ul.appendChild(rem)
 
   //finally add data to the DOM
   plantsCount.appendChild(ul);
+ 
 
-
+//remove data from the Dom and Database
   rem.addEventListener('click', (e) => {
     e.stopPropagation();
     let id = e.target.parentElement.getAttribute('data-id');
     seedb.collection('plantsToGrow').doc(id).delete();
     });
 
+//
     let myEvnt = document.getElementsByName('seedname');
-    //let itemClik;
+    console.log(`Array created for seedname, now map it for click`);
+    
+
+    let itemClik = [];
+    itemClik.push(myEvnt)
+    console.log(`itemClik : ${itemClik}`);
+    
     //for (let i = 0; i < myEvnt.length; i++) {
     //itemClik = myEvnt[i].textContent[i];
       //}
     //const addUIAlert;
 
+    [].map.call(itemClik[0], e => {
+      e.addEventListener("click",e => {
+        e.stopPropagation();console.log("looks ok now")
+        },false 
+
+        )});
     
-      myEvnt.forEach((a,i)=>a.addEventListener('click', (e) => {
-        //e.preventDefault();
-        e.stopPropagation();
-        console.log(`Clicked panel can contain more info about ${myEvnt[i]}`);
-        
-      },false))
+     
+
    
 };
 
@@ -120,11 +133,14 @@ domele(ele,elVal);
 
 //retrirve data from the Firestore
 //realtime update of stored result
-seedb.collection("plantsToGrow").orderBy('seed').orderBy('rr').onSnapshot(snapshot => {
+seedb.collection("plantsToGrow").orderBy("plants", "desc").onSnapshot(snapshot => {
   let changes = snapshot.docChanges();
   changes.forEach(change => {
     if (change.type == "added") {
       renderResult(change.doc);
+      if ("added") {
+        document.getElementById("dloaded").classList.remove("loader")
+      } 
       
     }else if (change.type == 'removed'){
         let li = plantsCount.querySelector('[data-id=' + change.doc.id + ']');
